@@ -1,0 +1,37 @@
+import productos.*
+
+describe "Libro" {
+	
+	method crearLibroDeMonto(monto) {
+		const libro = new Libro()
+		libro.precio(monto)
+		return libro
+	}
+
+	test "es caro cuando supera el limite de precio" {
+		assert.that(self.crearLibroDeMonto(3501).esCaro())
+	}
+	
+	test "no es caro si no supera el limite de precio" {
+		assert.notThat(self.crearLibroDeMonto(3500).esCaro())
+	}
+}
+
+describe "DVD" {
+	
+	method crearDVD(unPrecio, unosMinutos) {
+		return new DVD(precioPorMinuto = unPrecio, minutos = unosMinutos)
+	}
+	
+	test "precio adecuado segun minutos" {
+		assert.equals(6, self.crearDVD(2, 3).precio())
+	}
+	
+	test "es caro si supera su limite de minutos" {
+		assert.that(self.crearDVD(2, 101).esCaro())
+	}
+	
+	test "no es caro si no supera su limite de minutos" {
+		assert.notThat(self.crearDVD(2, 100).esCaro())
+	}
+}
