@@ -62,14 +62,5 @@ class Libro {
  	}
  }
  
- object calculadora {
- 	method dividir(a, b) {
- 		if (b == 0) {
- 			throw new Exception(message = "no se puede dividir por 0")
- 		}
- 		return a / b
- 	}
- }
- 
  
  
